@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "JdlCUcgFTGQ=",
+  "success": true,
+  "projectFilePath": "D:\\aspnet\\layoutdesign\\layoutdesign\\layoutdesign.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

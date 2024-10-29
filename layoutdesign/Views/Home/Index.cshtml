@@ -1,0 +1,116 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h1 class="text-center text-3xl font-bold mb-10">Our Products</h1>
+
+<div class="grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 justify-between gap-5 ">
+    @foreach (var product in Model) // Iterate over the product list
+    {
+        @await Html.PartialAsync("Components/_ProductCard", product)
+        // Render the product card partial
+    }
+</div>
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="grid grid-cols-2 justify-between">
+    <div>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+    <div>
+        <canvas id="myBarChart" width="400" height="200"></canvas>
+    </div>
+</div>
+<script>
+    // Get chart data from ViewBag
+    var chartData = @Html.Raw(ViewBag.ChartData);
+
+    // Prepare data for Chart.js
+    var labels = chartData.map(function (data) { return data.Label; });
+    var values = chartData.map(function (data) { return data.Value; });
+
+    // Render the chart using Chart.js
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie', // You can change this to 'bar', 'line', etc.
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Votes',
+                data: values,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Sample Pie Chart'
+                }
+            }
+        }
+    });
+
+
+    var chartData = @Html.Raw(ViewBag.ChartData);
+
+    // Prepare data for Chart.js
+    var labels = chartData.map(function (data) { return data.Label; });
+    var values = chartData.map(function (data) { return data.Value; });
+
+    // Render the bar chart using Chart.js
+    var ctx = document.getElementById('myBarChart').getContext('2d');
+    var myBarChart = new Chart(ctx, {
+        type: 'bar', // Set chart type to 'bar'
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Values',
+                data: values,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true // Start y-axis at zero
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Sample Bar Chart'
+                }
+            }
+        }
+    });
+</script>
