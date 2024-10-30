@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kEtLo47xw1Ffhj3x7mdQXIx8VB6Gs7sBC3eJgLOKExM=",
+  "Hash": "CVonQguTdTZcbDusprM3to1hHST+V0sVyUcPUKBHin8=",
   "Source": "layoutdesign",
   "BasePath": "_content/layoutdesign",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\aspnet\\layoutdesign\\layoutdesign\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\layoutdesign.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\aspnet\\layoutdesign\\layoutdesign\\wwwroot\\css\\account.css",
+      "SourceId": "layoutdesign",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\aspnet\\layoutdesign\\layoutdesign\\wwwroot\\",
+      "BasePath": "_content/layoutdesign",
+      "RelativePath": "css/account.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\account.css"
     },
     {
       "Identity": "D:\\aspnet\\layoutdesign\\layoutdesign\\wwwroot\\css\\product.css",

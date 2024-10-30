@@ -1,7 +1,34 @@
+using layoutdesign.Data;
+using layoutdesign.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddIdentity<Appuser, IdentityRole>(
+    option =>
+    {
+        option.Password.RequiredUniqueChars = 1;
+        option.Password.RequireDigit = true;
+        option.Password.RequireLowercase = true;
+        option.Password.RequireNonAlphanumeric = false;
+        option.Password.RequiredLength = 8;
+        option.Password.RequireUppercase = true;
+    }
+
+    )
+    .AddEntityFrameworkStores<ApplicationDBContext>();
+
+
 
 // Register HttpClient
 builder.Services.AddHttpClient(); // <--- This registers IHttpClientFactory

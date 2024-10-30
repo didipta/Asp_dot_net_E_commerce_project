@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\layoutdesign.bundle.scp.css"
     },
     {
+      "Id": "D:\\aspnet\\layoutdesign\\layoutdesign\\wwwroot\\css\\account.css",
+      "PackagePath": "staticwebassets\\css\\account.css"
+    },
+    {
       "Id": "D:\\aspnet\\layoutdesign\\layoutdesign\\wwwroot\\css\\product.css",
       "PackagePath": "staticwebassets\\css\\product.css"
     },

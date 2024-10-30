@@ -1,0 +1,31 @@
+﻿@model layoutdesign.DTo.Login
+@{
+    ViewData["Title"] = "Login Page";
+    Layout = "~/Views/Shared/_Accountlayout.cshtml";
+}
+<h1>
+    @ViewData["Title"]
+</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<div>
+    <h1>Login</h1>
+    <form asp-action="Login" asp-controller="Account" method="post">
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" className="input input-bordered w-full max-w-xs" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control" className="input input-bordered w-full max-w-xs" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+    <a asp-action="Register" asp-controller="Account">Register</a>
+</div>
+
