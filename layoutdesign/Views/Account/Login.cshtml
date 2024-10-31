@@ -3,29 +3,36 @@
     ViewData["Title"] = "Login Page";
     Layout = "~/Views/Shared/_Accountlayout.cshtml";
 }
-<h1>
+<h1 class="text-2xl font-bold text-center mt-8 mb-4">
     @ViewData["Title"]
 </h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8">
+    <h1 class="text-xl font-semibold text-center mb-4">Login</h1>
+    <form asp-action="Login" asp-controller="Account" method="post" class="space-y-0">
+        <div class=" relative pb-5">
+            <label asp-for="Email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input asp-for="Email" class="input input-bordered w-full" placeholder="Enter your Email" />
+            <span asp-validation-for="Email" class="text-red-500 text-xs absolute bottom-0 left-0 pt-3"></span>
+        </div>
+        <div class=" relative pb-5">
+            <label asp-for="Password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input asp-for="Password" type="password" class="input input-bordered w-full h-10" placeholder="Enter your Password" />
+            <span asp-validation-for="Password" class="text-red-500 text-xs absolute bottom-0 left-0 pt-3"></span>
+        </div>
+        <div class=" relative" >
+            <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+            <label asp-for="RememberMe" class="form-check">Remember Me</label>
 
-<div>
-    <h1>Login</h1>
-    <form asp-action="Login" asp-controller="Account" method="post">
-        <div class="form-group">
-            <label asp-for="Email"></label>
-            <input asp-for="Email" class="form-control" className="input input-bordered w-full max-w-xs" />
-            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="Password"></label>
-            <input asp-for="Password" class="form-control" className="input input-bordered w-full max-w-xs" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
+
+        <div class="flex justify-center mt-6">
+            <button type="submit" class="btn bg-black text-white w-full">Login</button>
         </div>
     </form>
-    <a asp-action="Register" asp-controller="Account">Register</a>
+    <div class="text-center mt-4">
+        <a asp-action="Register" asp-controller="Account" class="text-sm text-blue-500 hover:underline">
+            Don't have an account? Register
+        </a>
+    </div>
 </div>
-

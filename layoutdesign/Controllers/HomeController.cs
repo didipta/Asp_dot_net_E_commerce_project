@@ -16,16 +16,7 @@ namespace layoutdesign.Controllers
 
         public IActionResult Index()
         {
-            var userdata = new
-            {
-                Username = "JohnDoe",
-                Email = "johndoe@gmail.com",
-                Age = 25,
-                address=new { Address = "123 Main St", City = "New York", State = "NY", Zip = "10001" }
-
-            };
-            var jsonString = JsonConvert.SerializeObject(userdata);
-            HttpContext.Session.SetString("UserDATA", jsonString);
+            
             var products = new List<ProductViewModel>
         {
             new ProductViewModel { Title = "Product 1", ImageUrl = "https://images.pexels.com/photos/4158/apple-iphone-smartphone-desk.jpg?cs=srgb&dl=pexels-pixabay-4158.jpg&fm=jpg", Price = 49.99m },

@@ -44,22 +44,11 @@
                     </details>
                 </li>
                 <li><a asp-area="" asp-controller="Product" asp-action="Index">Product</a></li>
-                <partial name="_Loginpartial" />
+               
             </ul>
         </div>
-        <div class="navbar-end flex items-center gap-2">
-            @if (Context.Session.TryGetValue("UserDATA", out var userDataBytes)) // Check for UserData
-            {
-                var userDataJson = System.Text.Encoding.UTF8.GetString(userDataBytes);
-                var userData = JsonConvert.DeserializeObject<dynamic>(userDataJson); // Deserialize into UserData class
-                var username = userData.Email; // Access username from userData
-                <li class="hover:text-yellow-500">Welcome, @username!</li>
-                <li><a href="/Account/Logout" class="hover:text-yellow-500">Logout</a></li>
-            }
-            else
-            {
-                <li><a href="/Account/Login" class="hover:text-yellow-500">Login</a></li>
-            }
+        <div class="navbar-end flex items-center gap-2 px-4">
+            <partial name="_Loginpartial" />
         </div>
     </div>
 </div>

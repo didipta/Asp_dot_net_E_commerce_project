@@ -1,0 +1,30 @@
+﻿@if (TempData["error"] != null)
+{
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            Toastify({
+                text: "@TempData["error"]",
+                duration: 3000,
+                close: true,
+                gravity: "top", // Position from the top
+                position: "right", // Align to the right
+                backgroundColor: "red"
+            }).showToast();
+        });
+    </script>
+}
+@if (TempData["success"] != null)
+{
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            Toastify({
+                text: "@TempData["success"]",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "green"
+            }).showToast();
+        });
+    </script>
+}
