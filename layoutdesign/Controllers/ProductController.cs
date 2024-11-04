@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
 
@@ -11,7 +12,7 @@ namespace layoutdesign.Controllers
         public ProductController(ApiService apiService) {
             _apiService = apiService;
         }
-
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var apiUrl = "https://jsonplaceholder.typicode.com/posts"; // Replace with the actual API URL

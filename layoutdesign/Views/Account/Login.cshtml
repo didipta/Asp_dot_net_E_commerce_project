@@ -20,7 +20,7 @@
             <input asp-for="Password" type="password" class="input input-bordered h-10 w-full" placeholder="Enter your Password" />
             <span asp-validation-for="Password" class="text-red-500 bottom-0 left-0 pt-3 absolute text-xs"></span>
         </div>
-        <div class="relative" >
+        <div class="pb-4 relative" >
             <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
             <label asp-for="RememberMe" class="form-check">Remember Me</label>
 
@@ -36,3 +36,9 @@
         </a>
     </div>
 </div>
+
+@section Scripts {
+   @{
+       await Html.RenderPartialAsync("_ValidationScriptsPartial");
+   }
+}

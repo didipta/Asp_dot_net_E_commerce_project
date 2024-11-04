@@ -1,4 +1,5 @@
 using layoutdesign.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -13,7 +14,7 @@ namespace layoutdesign.Controllers
         {
             _logger = logger;
         }
-
+        
         public IActionResult Index()
         {
             

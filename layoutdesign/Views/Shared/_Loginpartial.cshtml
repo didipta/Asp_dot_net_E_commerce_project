@@ -1,31 +1,16 @@
 ﻿@using Microsoft.AspNetCore.Identity;
-@using Newtonsoft.Json
 @inject SignInManager<Appuser> SignInManager;
 
-     
-    @if ( Context.Session.TryGetValue("UserDATA", out var userDataBytes))
-         {
-        var userDataJson = System.Text.Encoding.UTF8.GetString(userDataBytes);
-        var userData = JsonConvert.DeserializeObject<dynamic>(userDataJson); // Deserialize into UserData class
-        var username = userData.Email; // Access username from userData
-        <li class="hover:text-yellow-500">Welcome, @username!</li>
-        <li><a href="/Account/Logout" class="hover:text-yellow-500">Logout</a></li>
 
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="pr-3 hover:text-yellow-500">Welcome, @User.Identity.Name!</li>
+    <li><a asp-controller="Account" asp-action="Logout"  class="hover:text-yellow-500">Logout</a></li>
     }
     else
     {
-        if (!SignInManager.IsSignedIn(User))
-        {
-            <li>
-                <a asp-area="" asp-controller="Account" asp-action="Login" class="hover:text-yellow-500">Login</a>
-            </li>
-        }
-
-             
-             
-         }
-         </ul>
-
-
-
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="Login" class="hover:text-yellow-500">Login</a>
+        </li>
+    }
 

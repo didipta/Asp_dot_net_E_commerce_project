@@ -9,10 +9,14 @@ namespace layoutdesign.DTo
         public string Email { get; set; }
         
         [Required]
-        //[MinLength(8),
-        //  MaxLength(50),
-        //  RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$",
-        //  ErrorMessage = "Password must be 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.")]
+        [MinLength(8, ErrorMessage = "Password must be at least 8 characters long"),
+          MaxLength(50,
+            ErrorMessage = "Password must be at most 50 characters long"
+            ),
+          RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$",
+            ErrorMessage = "Password not strong enough."
+            )
+          ]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
