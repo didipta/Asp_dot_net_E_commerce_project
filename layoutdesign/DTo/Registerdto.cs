@@ -5,12 +5,12 @@ namespace layoutdesign.DTo
     public class Registerdto
     {
         [Required]
-        [MinLength(3), MaxLength(50)]
+        [MinLength(3,ErrorMessage ="First Name must be at least 3 characters long"), MaxLength(50,ErrorMessage ="First Name must be at most 50 characters long")]
         [Display(Name = "First Name")]
         public string FisrtName { get; set; }
 
         [Required]
-        [MinLength(3), MaxLength(50)]
+        [MinLength(3,ErrorMessage ="Last Name must be at least 3 characters long"), MaxLength(50,ErrorMessage ="Last Name must be at most 50 characters long")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
@@ -20,6 +20,7 @@ namespace layoutdesign.DTo
 
         [Required]
         [Phone]
+        [Range(11, 11, ErrorMessage = "Phone Number must be 11 digits")]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 

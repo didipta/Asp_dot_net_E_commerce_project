@@ -1,0 +1,50 @@
+﻿@model layoutdesign.DTo.Registerdto
+@{
+    ViewData["Title"] = "Registation Page";
+    Layout = "~/Views/Shared/_Accountlayout.cshtml";
+}
+
+<div class="bg-white p-8 mx-auto max-w-md rounded-lg shadow-md">
+    <h1 class="mb-4 text-center text-xl font-semibold">Register</h1>
+    <form asp-action="Register" asp-controller="Account" method="post" class="space-y-0">
+        <div class="pb-5 relative">
+            <label asp-for="FisrtName" class="text-gray-700 block text-sm font-medium"></label>
+            <input asp-for="FisrtName" class="input input-bordered h-10 w-full focus:outline-none" placeholder="Enter your Fisrt Name" />
+            <span asp-validation-for="FisrtName" class="text-red-500 bottom-0 left-0 pt-3 absolute text-xs"></span>
+        </div>
+
+        <div class="pb-5 relative">
+            <label asp-for="LastName" class="text-gray-700 block text-sm font-medium"></label>
+            <input asp-for="LastName" class="input input-bordered h-10 w-full focus:outline-none" placeholder="Enter your Last Name" />
+            <span asp-validation-for="LastName" class="text-red-500 bottom-0 left-0 pt-3 absolute text-xs"></span>
+        </div>
+        
+        <div class="pb-5 relative">
+            <label asp-for="Email" class="text-gray-700 block text-sm font-medium">Email</label>
+            <input asp-for="Email" class="input input-bordered h-10 w-full focus:outline-none" placeholder="Enter your Email" />
+            <span asp-validation-for="Email" class="text-red-500 bottom-0 left-0 pt-3 absolute text-xs"></span>
+        </div>
+        <div class="pb-5 relative">
+            <label asp-for="PhoneNumber" class="text-gray-700 block text-sm font-medium"></label>
+            <input asp-for="PhoneNumber" class="input input-bordered h-10 w-full focus:outline-none" placeholder="Enter your Phone Number" />
+            <span asp-validation-for="PhoneNumber" class="text-red-500 bottom-0 left-0 pt-3 absolute text-xs"></span>
+        </div>
+        <div class="pb-5 relative">
+            <label asp-for="Password" class="text-gray-700 block text-sm font-medium">Password</label>
+            <input asp-for="Password" type="password" class="input input-bordered h-10 w-full focus:outline-none" placeholder="Enter your Password" />
+            <span asp-validation-for="Password" class="text-red-500 bottom-0 left-0 pt-3 absolute text-xs"></span>
+        </div>
+        <div class="pb-5 relative">
+            <label asp-for="ConfirmPassword" class="text-gray-700 block text-sm font-medium">Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="input input-bordered h-10 w-full focus:outline-none" placeholder="Confirm your Password" />
+            <span asp-validation-for="ConfirmPassword" class="text-red-500 bottom-0 left-0 pt-3 absolute text-xs"></span>
+        </div>
+        <div class="mt-6 flex justify-center">
+            <button type="submit" class="btn bg-black text-white w-full">Register</button>
+        </div>
+    </form>
+    <div class="mt-4 text-center">
+        <a asp-action="Login" asp-controller="Account" class="text-blue-500 text-sm hover:underline">
+            Already have an account? Login
+        </a>
+    </div>

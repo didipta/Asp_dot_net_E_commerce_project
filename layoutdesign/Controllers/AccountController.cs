@@ -37,5 +37,19 @@ namespace layoutdesign.Controllers
                 return View(login);
             }
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(Registerdto registerdto)
+        {
+            if (!ModelState.IsValid)
+                return View(registerdto);
+
+            return RedirectToAction("Index", "Product");
+        }
     }
 }
