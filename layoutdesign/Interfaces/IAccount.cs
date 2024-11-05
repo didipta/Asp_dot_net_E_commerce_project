@@ -5,7 +5,7 @@ namespace layoutdesign.Interfaces
 {
     public interface IAccount
     {
-        Task<IActionResult> Login(Login login);
+        Task<bool> Login(Login login);
         Task<IActionResult> Register(Registerdto registerdto);
     }
 }

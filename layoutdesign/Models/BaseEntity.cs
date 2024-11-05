@@ -5,6 +5,8 @@ namespace layoutdesign.Models
 {
     public class BaseEntity
     {
+        //id is auto genareted
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Int64 Id { get; set; }

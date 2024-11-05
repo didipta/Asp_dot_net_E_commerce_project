@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Repository\" />
     <Folder Include="Views\Shared\NewFolder\" />
   </ItemGroup>
 

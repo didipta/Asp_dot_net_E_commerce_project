@@ -13,7 +13,7 @@ namespace layoutdesign.Mappers
                 LastName = registerdto.LastName,
                 Email = registerdto.Email,
                 PhoneNumber = registerdto.PhoneNumber,
-                UserName=registerdto.FisrtName.ToLower()  + registerdto.LastName.ToLower(),
+                UserName=registerdto.FisrtName.ToLower()  + registerdto.LastName.ToLower()
                 
 
             };

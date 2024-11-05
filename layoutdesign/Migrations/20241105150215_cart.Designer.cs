@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using layoutdesign.Data;
 
@@ -11,9 +12,11 @@ using layoutdesign.Data;
 namespace layoutdesign.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241105150215_cart")]
+    partial class cart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,37 +54,37 @@ namespace layoutdesign.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dc69e0fa-f4ef-4476-a92d-b8fb3a7a7079",
+                            Id = "e01081e8-399b-437d-9947-49fd3d6af5ec",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c7a9ffae-0513-4507-8acb-61010cfe9ea5",
+                            Id = "28303493-5c09-4373-8fc0-332adb4824a9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fd2a05f8-0ba0-4446-bf5a-0d84ccfe7327",
+                            Id = "68f56445-3fc7-47fc-a81e-a869dceabd6c",
                             Name = "Employe",
                             NormalizedName = "EMPLOYE"
                         },
                         new
                         {
-                            Id = "13eb00f2-d596-4880-b840-c8f14eb734d4",
+                            Id = "2023c428-405a-4cba-8b47-c4ffc3a42333",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "fa86e594-ed9a-4d2a-a3b2-620cd42cc3a5",
+                            Id = "044f5a98-87d3-4567-b404-0dc37fe2240b",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "0695d142-5b3f-44b0-92f5-35454d588e30",
+                            Id = "dea6d30c-28fd-4854-b3ac-795c6e5cf914",
                             Name = "deliveryMan",
                             NormalizedName = "DELIVERYMAN"
                         });
@@ -308,28 +311,6 @@ namespace layoutdesign.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brand");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software, and online services. Apple is the world's largest technology company by revenue and, since January 2021, the world's most valuable company.",
-                            ImageUrl = "https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?201810271738",
-                            IsActive = false,
-                            IsRemoved = false,
-                            Name = "Apple"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Samsung Electronics Co., Ltd. is a South Korean multinational electronics company headquartered in the Yeongtong District of Suwon. It is the pinnacle of the Samsung chaebol, accounting for 70% of the group's revenue in 2012.",
-                            ImageUrl = "https://www.samsung.com/etc/designs/smg/global/imgs/logo-square-letter.png",
-                            IsActive = false,
-                            IsRemoved = false,
-                            Name = "Samsung"
-                        });
                 });
 
             modelBuilder.Entity("layoutdesign.Models.Cart", b =>
@@ -457,48 +438,6 @@ namespace layoutdesign.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Devices and gadgets including phones, laptops, and more.",
-                            ImageUrl = "https://example.com/images/electronics.jpg",
-                            IsActive = false,
-                            IsRemoved = false,
-                            Name = "Electronics"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Clothing, accessories, and fashion products.",
-                            ImageUrl = "https://example.com/images/fashion.jpg",
-                            IsActive = false,
-                            IsRemoved = false,
-                            Name = "Fashion"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Appliances for everyday household needs.",
-                            ImageUrl = "https://example.com/images/home_appliances.jpg",
-                            IsActive = false,
-                            IsRemoved = false,
-                            Name = "Home Appliances"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "A variety of books and reading materials.",
-                            ImageUrl = "https://example.com/images/books.jpg",
-                            IsActive = false,
-                            IsRemoved = false,
-                            Name = "Books"
-                        });
                 });
 
             modelBuilder.Entity("layoutdesign.Models.Product", b =>
