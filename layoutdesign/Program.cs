@@ -1,5 +1,6 @@
 using layoutdesign.Data;
 using layoutdesign.Models;
+using layoutdesign.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<LoggingService>(); // Register LoggingService
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(connectionString));
 

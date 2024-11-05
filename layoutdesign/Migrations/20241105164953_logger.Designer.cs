@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using layoutdesign.Data;
 
@@ -11,9 +12,11 @@ using layoutdesign.Data;
 namespace layoutdesign.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241105164953_logger")]
+    partial class logger
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,37 +54,37 @@ namespace layoutdesign.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e15e8616-b091-48ee-ab7e-25606683a5df",
+                            Id = "ee26e4c2-b13a-4142-9268-9ccccc74bf18",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "03587891-9a1d-4c82-bc0e-3bd4ce4da50d",
+                            Id = "46f2ec13-20d6-4375-8bdb-5a81490e368f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "78b42732-be54-4557-accb-97bf29fcf41f",
+                            Id = "e9bb974d-1604-40e1-b151-57ab2fd14dd8",
                             Name = "Employe",
                             NormalizedName = "EMPLOYE"
                         },
                         new
                         {
-                            Id = "ddc6c3a4-cba6-4a3c-8636-a3185019c7c3",
+                            Id = "1069d32f-7eb4-4272-b027-314d5a023ec5",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "d0d8c0a6-7f37-4803-9dcf-649e46203a91",
+                            Id = "dc13c5a6-db75-4a2f-b4de-b7a4bbcbc3bc",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "05bc57b6-847f-4485-9f12-c3cfdbe6a661",
+                            Id = "25c0af99-021e-4380-ade0-2fa8bbdeb93e",
                             Name = "deliveryMan",
                             NormalizedName = "DELIVERYMAN"
                         });
@@ -516,6 +519,7 @@ namespace layoutdesign.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Exception")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -542,6 +546,7 @@ namespace layoutdesign.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
