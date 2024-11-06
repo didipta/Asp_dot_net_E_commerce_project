@@ -36,11 +36,16 @@
                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 <li>
                     <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
+                        <summary>Category</summary>
+                        <!-- This is where the category list will be inserted dynamically -->
+                        <ul id="categoryMenu" class="space-y-1 p-2 rounded-sm shadow-lg"></ul>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>Brand</summary>
+                        <!-- This is where the brand list will be inserted dynamically -->
+                        <ul id="brandMenu" class="space-y-1 p-2 rounded-sm shadow-lg"></ul>
                     </details>
                 </li>
                 <li><a asp-area="" asp-controller="Product" asp-action="Index">Product</a></li>
@@ -52,3 +57,45 @@
         </div>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Trigger the AJAX request when the page loads
+        loadHeaderData();
+
+        function loadHeaderData() {
+            $.ajax({
+                url: '@Url.Action("GetHeaderData", "Commondata")',  // Action and Controller for the AJAX call
+                type: 'GET',  // Request type (GET)
+                success: function(response) {
+                    // Process the response which is an object
+                    var categories = response.showcategory;
+                    var brands = response.showbrand;
+
+                    // For example, update the category menu dynamically
+                    var categoryHtml = '';
+                    categories.forEach(function(item) {
+                        categoryHtml += `<li><a href=${item.slug}> ${item.name} </a></li>`;
+                    });
+
+                    // Insert the updated category list into the page
+                    $('#categoryMenu').html(categoryHtml);
+
+                    // Similarly, handle brands if needed
+                    var brandHtml = '';
+                    brands.forEach(function(brand) {
+                        brandHtml += `<li><a href=${brand.slug}> ${brand.name} </a></li>`;
+                    });
+
+                    $('#brandMenu').html(brandHtml);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching header data: " + error);
+                }
+            });
+        }
+    });
+</script>

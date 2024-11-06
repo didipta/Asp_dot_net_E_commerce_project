@@ -1,8 +1,6 @@
-﻿using layoutdesign.Models;
-
-namespace layoutdesign.DTo.Category
+﻿namespace layoutdesign.DTo.Brand
 {
-    public class Showcategory
+    public class Showbrand
     {
         public Int64 Id { get; set; }
         public string Name { get; set; }

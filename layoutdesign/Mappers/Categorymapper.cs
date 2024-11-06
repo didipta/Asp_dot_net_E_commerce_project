@@ -11,6 +11,7 @@ namespace layoutdesign.Mappers
             {
                 Id = category.Id,
                 Name = category.Name,
+                slug = category.slug,
                 Description = category.Description,
                 ImageUrl = category.ImageUrl
             };

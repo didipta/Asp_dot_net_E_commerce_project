@@ -17,6 +17,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<LoggingService>(); // Register LoggingService
 //builder.Services.AddScoped<Icategory, Categoryrepo>(); // Register Categoryrepo
 builder.Services.AddScoped<Categoryrepo>(); // Register Productrepo
+builder.Services.AddScoped<Brandrepo>(); // Register Brandrepo
 
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(connectionString));

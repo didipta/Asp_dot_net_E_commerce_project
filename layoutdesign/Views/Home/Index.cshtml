@@ -7,7 +7,23 @@
 <div class="gap-5 grid grid-cols-2 justify-between md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
     @foreach (var item in Model.Showcategory)
     {
-        <p>@item?.Name</p>
+       <div class="p-10 rounded-lg shadow-lg">
+            <p class="text-green-700 font-bold">@item?.Name</p>
+            <small class="text-gray-800 text-justify">
+                @item?.Description
+            </small>
+       </div>
+    }
+</div>
+<div class="gap-5 grid grid-cols-2 justify-between md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+    @foreach (var item in Model.Showbrand)
+    {
+       <div class="p-10 rounded-lg shadow-lg">
+            <p class="text-green-700 font-bold">@item?.Name</p>
+            <small class="text-gray-800 text-justify">
+                @item?.Description
+            </small>
+       </div>
     }
 </div>
 <!-- Include Chart.js library -->

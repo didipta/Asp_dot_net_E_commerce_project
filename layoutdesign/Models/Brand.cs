@@ -9,6 +9,10 @@ namespace layoutdesign.Models
         [MinLength(3), MaxLength(50)]
         public string Name { get; set; }
         [MaxLength(00)]
+
+        [Required]
+        
+        public string slug { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
 

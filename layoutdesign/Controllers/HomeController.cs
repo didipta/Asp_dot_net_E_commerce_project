@@ -1,4 +1,5 @@
 using layoutdesign.DTo;
+using layoutdesign.DTo.Brand;
 using layoutdesign.DTo.Category;
 using layoutdesign.Mappers;
 using layoutdesign.Models;
@@ -13,11 +14,13 @@ namespace layoutdesign.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Categoryrepo _categoryrepo;
+        private readonly Brandrepo _brandrepo;
 
-        public HomeController(ILogger<HomeController> logger, Categoryrepo categoryrepo)
+        public HomeController(ILogger<HomeController> logger, Categoryrepo categoryrepo,Brandrepo brandrepo)
         {
             _logger = logger;
             _categoryrepo = categoryrepo;
+            _brandrepo = brandrepo;
         }
         
         public async Task<IActionResult> Index()
@@ -27,9 +30,13 @@ namespace layoutdesign.Controllers
             List<Category> categories = await _categoryrepo.GetCategories();
             List<Showcategory> showcategory = categories.Select(s => s.Showcategory()).ToList();
 
+            List<Brand> brands = await _brandrepo.GetBrands();
+            List<Showbrand> showbrand = brands.Select(s => s.Showbrand()).ToList();
+
             var homedatashow = new Homedatashow
             {
                 Showcategory = showcategory,
+                Showbrand = showbrand
 
             };
 

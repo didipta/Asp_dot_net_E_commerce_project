@@ -14,6 +14,7 @@ namespace layoutdesign.Data.Seeddata
                 {
                     Id = 1,
                     Name = "Electronics",
+                    slug = "electronics",
                     ImageUrl = "https://example.com/images/electronics.jpg",
                     Description = "Devices and gadgets including phones, laptops, and more."
                 },
@@ -21,6 +22,7 @@ namespace layoutdesign.Data.Seeddata
                 {
                     Id = 2,
                     Name = "Fashion",
+                    slug = "fashion",
                     ImageUrl = "https://example.com/images/fashion.jpg",
                     Description = "Clothing, accessories, and fashion products."
                 },
@@ -28,6 +30,7 @@ namespace layoutdesign.Data.Seeddata
                 {
                     Id = 3,
                     Name = "Home Appliances",
+                    slug = "home-appliances",
                     ImageUrl = "https://example.com/images/home_appliances.jpg",
                     Description = "Appliances for everyday household needs."
                 },
@@ -35,6 +38,7 @@ namespace layoutdesign.Data.Seeddata
                 {
                     Id = 4,
                     Name = "Books",
+                    slug = "books",
                     ImageUrl = "https://example.com/images/books.jpg",
                     Description = "A variety of books and reading materials."
                 }
