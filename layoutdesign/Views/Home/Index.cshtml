@@ -1,14 +1,13 @@
-﻿@model IEnumerable<ProductViewModel>
+﻿@model layoutdesign.DTo.Homedatashow
 @{
     ViewData["Title"] = "Home Page";
 }
 <h1 class="mb-10 text-center text-3xl font-bold">Our Products</h1>
 
 <div class="gap-5 grid grid-cols-2 justify-between md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-    @foreach (var product in Model) // Iterate over the product list
+    @foreach (var item in Model.Showcategory)
     {
-        @await Html.PartialAsync("Components/_ProductCard", product)
-        // Render the product card partial
+        <p>@item?.Name</p>
     }
 </div>
 <!-- Include Chart.js library -->

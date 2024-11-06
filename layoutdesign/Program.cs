@@ -1,5 +1,7 @@
 using layoutdesign.Data;
+using layoutdesign.Interfaces;
 using layoutdesign.Models;
+using layoutdesign.Repository;
 using layoutdesign.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +15,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<LoggingService>(); // Register LoggingService
+//builder.Services.AddScoped<Icategory, Categoryrepo>(); // Register Categoryrepo
+builder.Services.AddScoped<Categoryrepo>(); // Register Productrepo
+
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(connectionString));
 

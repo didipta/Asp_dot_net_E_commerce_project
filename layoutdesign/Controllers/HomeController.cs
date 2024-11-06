@@ -1,5 +1,8 @@
+using layoutdesign.DTo;
+using layoutdesign.DTo.Category;
+using layoutdesign.Mappers;
 using layoutdesign.Models;
-using Microsoft.AspNetCore.Authorization;
+using layoutdesign.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -9,61 +12,28 @@ namespace layoutdesign.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Categoryrepo _categoryrepo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Categoryrepo categoryrepo)
         {
             _logger = logger;
+            _categoryrepo = categoryrepo;
         }
         
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             
-            var products = new List<ProductViewModel>
-        {
-            new ProductViewModel { Title = "Product 1", ImageUrl = "https://images.pexels.com/photos/4158/apple-iphone-smartphone-desk.jpg?cs=srgb&dl=pexels-pixabay-4158.jpg&fm=jpg", Price = 49.99m },
-            new ProductViewModel { Title = "Product 2", ImageUrl = "https://via.placeholder.com/300x200", Price = 59.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m },
-            new ProductViewModel { Title = "Product 3", ImageUrl = "https://via.placeholder.com/300x200", Price = 39.99m }
-        };
-            var chartData = new List<ChartData>
+            
+            List<Category> categories = await _categoryrepo.GetCategories();
+            List<Showcategory> showcategory = categories.Select(s => s.Showcategory()).ToList();
+
+            var homedatashow = new Homedatashow
             {
-                new ChartData { Label = "Category A", Value = 430 },
-                new ChartData { Label = "Category B", Value = 450 },
-                new ChartData { Label = "Category B", Value = 550 },
-                new ChartData { Label = "Category B", Value = 750 },
-                new ChartData { Label = "Category B", Value = 150 },
-                new ChartData { Label = "Category B", Value = 250 },
-                new ChartData { Label = "Category B", Value = 350 },
-                new ChartData { Label = "Category B", Value = 450 },
-                new ChartData { Label = "Category C", Value = 820 }
+                Showcategory = showcategory,
+
             };
 
-            // Pass the data to the view as JSON
-            ViewBag.ChartData = JsonConvert.SerializeObject(chartData);
-            return View(products);
+            return View(homedatashow);
         }
 
         public IActionResult Privacy()
