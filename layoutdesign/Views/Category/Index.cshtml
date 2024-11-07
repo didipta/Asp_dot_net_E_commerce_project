@@ -1,0 +1,76 @@
+﻿@model List<layoutdesign.Models.Category>
+
+
+
+@{
+    ViewData["Title"] = "Category list";
+}
+
+<h1 class="mb-10 text-center text-3xl font-bold">Category List</h1>
+<a asp-action="Create" class="btn btn-blue-400">Create New</a>
+
+<div class="overflow-x-auto">
+    <table class="p-4 my-2 mx-auto table w-9/12 shadow-lg">
+        <thead>
+            <tr>
+                <th>
+                    No
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    total product
+                </th>
+                <th>
+                    Active
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                        
+                    </td>
+                    <td>
+                       <div class="gap-3 flex items-center">
+                            <img src=@Html.DisplayFor(modelItem => item.ImageUrl)/>
+                            <span> @Html.DisplayFor(modelItem => item.Name)</span>
+                       </div>
+                    </td>
+                    <td>
+                        <spam class="line-clamp-1">@Html.DisplayFor(modelItem => item.Description)</spam>
+                    </td>
+                    <td>
+                        @item?.Products.Count
+                    </td>
+                    <td>
+                        <form asp-action="CategoryIsactive" asp-controller="Category" method="post">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                            <input type="checkbox" class="toggle" checked="@(item.IsActive)" onchange="this.form.submit();" />
+                      </form>
+                        
+                        
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm text-white bg-green-500">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm text-white bg-blue-500">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm text-white bg-red-500">
+                            Delete
+                        </a>                        
+
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

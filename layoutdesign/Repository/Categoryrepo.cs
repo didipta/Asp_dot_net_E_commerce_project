@@ -18,9 +18,39 @@ namespace layoutdesign.Repository
             throw new NotImplementedException();
         }
 
+        public async Task<List<Category>> AllCategories()
+        {
+            
+            return await _context.Categories.ToListAsync();
+
+        }
+
         public Task<Category> DeleteCategory(long id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Category> CategoryIsactive(long id)
+        {
+            var result= await _context.Categories.FindAsync(id);
+            if (result != null)
+            {
+                //update isactive to true
+               if(result.IsActive == false)
+                {
+                    result.IsActive = true;
+                }
+                else
+                {
+                    result.IsActive = false;
+                }
+                _context.Categories.Update(result);
+                await _context.SaveChangesAsync();
+
+                return result;
+            }
+            
+            return null;
         }
 
         public async Task<List<Category>> GetCategories()
@@ -31,7 +61,7 @@ namespace layoutdesign.Repository
 
         public Task<Category> GetCategoryById(long id)
         {
-            throw new NotImplementedException();
+            return _context.Categories.FindAsync(id);
         }
 
         public Task<Category> UpdateCategory(Category category)
