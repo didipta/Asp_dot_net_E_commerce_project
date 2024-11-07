@@ -30,7 +30,7 @@ namespace layoutdesign.Repository
 
         public async Task<List<Brand>> GetBrands()
         {
-            return await _context.Brands.ToListAsync();
+            return await _context.Brands.Where(x => x.IsActive == false).ToListAsync();
         }
 
         public Task<Brand> UpdateBrand(Brand brand)

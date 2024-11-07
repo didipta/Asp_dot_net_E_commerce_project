@@ -25,7 +25,8 @@ namespace layoutdesign.Repository
 
         public async Task<List<Category>> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            //active categorie
+            return await _context.Categories.Where(x => x.IsActive==false).ToListAsync();
         }
 
         public Task<Category> GetCategoryById(long id)
