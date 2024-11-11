@@ -1,4 +1,5 @@
 using layoutdesign.Data;
+using layoutdesign.Helper;
 using layoutdesign.Interfaces;
 using layoutdesign.Models;
 using layoutdesign.Repository;
@@ -18,6 +19,8 @@ builder.Services.AddScoped<LoggingService>(); // Register LoggingService
 //builder.Services.AddScoped<Icategory, Categoryrepo>(); // Register Categoryrepo
 builder.Services.AddScoped<Categoryrepo>(); // Register Productrepo
 builder.Services.AddScoped<Brandrepo>(); // Register Brandrepo
+builder.Services.AddScoped<Accountrepo>();
+builder.Services.AddScoped<UpdatePlaceHolders>();
 
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(connectionString));
@@ -31,10 +34,12 @@ builder.Services.AddIdentity<Appuser, IdentityRole>(
         option.Password.RequireNonAlphanumeric = false;
         option.Password.RequiredLength = 8;
         option.Password.RequireUppercase = true;
+
+        option.SignIn.RequireConfirmedEmail = true;
     }
 
     )
-    .AddEntityFrameworkStores<ApplicationDBContext>();
+    .AddEntityFrameworkStores<ApplicationDBContext>().AddDefaultTokenProviders();
 
 
 
@@ -42,6 +47,7 @@ builder.Services.AddIdentity<Appuser, IdentityRole>(
 builder.Services.AddHttpClient(); // <--- This registers IHttpClientFactory
 builder.Services.AddScoped<ApiService>();
 builder.Services.AddHttpContextAccessor();
+
 
 // Add session services
 builder.Services.AddSession(options =>

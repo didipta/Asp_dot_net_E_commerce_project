@@ -59,9 +59,9 @@ namespace layoutdesign.Repository
             return await _context.Categories.Where(x => x.IsActive==false).ToListAsync();
         }
 
-        public Task<Category> GetCategoryById(long id)
+        public async Task<Category> GetCategoryById(long id)
         {
-            return _context.Categories.FindAsync(id);
+            return await _context.Categories.FindAsync(id);
         }
 
         public Task<Category> UpdateCategory(Category category)

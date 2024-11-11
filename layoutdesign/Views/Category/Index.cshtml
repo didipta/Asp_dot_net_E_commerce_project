@@ -54,14 +54,14 @@
                     <td>
                         <form asp-action="CategoryIsactive" asp-controller="Category" method="post">
                         <input type="hidden" name="Id" value="@item.Id" />
-                            <input type="checkbox" class="toggle" checked="@(item.IsActive)" onchange="this.form.submit();" />
+                            <input type="checkbox" class="toggle togggle-sm toggle-error" checked="@(item.IsActive)" onchange="this.form.submit();" />
                       </form>
                         
                         
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm text-white bg-green-500">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm text-white bg-blue-500">Details</a> |
+                        @* <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm text-white bg-blue-500">Details</a> | *@
                         <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm text-white bg-red-500">
                             Delete
                         </a>                        

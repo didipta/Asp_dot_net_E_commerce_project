@@ -1,11 +1,11 @@
 ﻿using layoutdesign.DTo;
+using layoutdesign.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace layoutdesign.Interfaces
 {
     public interface IAccount
     {
-        Task<bool> Login(Login login);
-        Task<IActionResult> Register(Registerdto registerdto);
+        Task SendEmailConfirmationAsync(Appuser user, string token);
     }
 }
